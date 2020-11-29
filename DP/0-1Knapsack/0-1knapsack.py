@@ -1,4 +1,4 @@
-
+# will work if we consider we have infinite no of supplies of each item
 # weight array and value array to maximize profit, within the capacity of knapsack
 wt = [1,3,4,5]
 val = [1,4,5,7]
