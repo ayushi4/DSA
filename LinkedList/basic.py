@@ -89,18 +89,64 @@ class LinkedList:
             
             itr = itr.next
             count += 1
+            
+            
+    def insert_after_value(self, data_after, data_to_insert):
+    # Search for first occurance of data_after value in linked list
+    # Now insert data_to_insert after data_after node
+        if self.head == None:
+            return
         
+        if self.head.data == data_after:
+            self.head.next = Node(data_to_insert, self.head.next)
+            return
+        
+        itr = self.head
+    
+        while itr:
+            if itr.data == data_after:
+                itr.next = Node(data_to_insert, itr.next)
+                break
+                
+            itr = itr.next
+            
+        
+    def remove_by_value(self, data):
+    # Remove first node that contains data
+        if self.head == None:
+            return
+        
+        if self.head.data == data:
+            self.head = self.head.next
+            return
+        
+        itr = self.head
+        found = 0
+        while itr.next:
+            
+            if itr.next.data == data:
+                itr.next = itr.next.next
+                return
+            
+            itr = itr.next
+        
+        if found == 0:
+            print data, "is not found in list"
+     
     
 if __name__ == '__main__':
     ll = LinkedList()
-    #ll.insert_at_begining(5)
-    #ll.insert_at_begining(89)
-    #ll.insert_at_end(78)
-    ll.insert_values(["banana","mango","grapes","apple", "orange"])
-    ll.insert_at_begining("cherry")
+    ll.insert_values(["banana","mango","grapes","cherry","orange"])
     ll.printt()
-    print"Length: ", ll.getLength()
-    ll.remove_at(2)
+    ll.insert_after_value("orange","apple") # insert apple after mango
     ll.printt()
-    ll.insert_at_index(0,"figs")
+    
+    ll.remove_by_value("orange") # remove orange from linked list
+    ll.printt()
+    ll.remove_by_value("figs")
+    ll.printt()
+    ll.remove_by_value("banana")
+    ll.remove_by_value("mango")
+    ll.remove_by_value("apple")
+    ll.remove_by_value("grapes")
     ll.printt()
